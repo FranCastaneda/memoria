@@ -2,9 +2,9 @@
 import './Cards.css';
 const cardsImages = require.context("../../assets/cards/", true);
 
-const Cards = ({card, animating, handleCardClick, mix})=>{
+const Cards = ({card, animating, handleCardClick, mix}) =>{
  
-  const flippedCard=()=>{
+  const flippedCard = () =>{
     if(!card.flipped && !animating){
       handleCardClick(card);
     }

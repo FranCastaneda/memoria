@@ -6,8 +6,11 @@ import Board from './components/Board/Board';
 
 const cardsList = ['card1', 'card2', 'card3', 'card4', 'card5', 'card6', 'card7', 'card8', 'card9'];
 
+const shuffledArray = (cardsList) => {
+  return cardsList.sort(function () { return Math.random() - 0.5 });
+}
 
-const App = ()=>{
+const App = () =>{
 
   const [shuffledCards, setShuffledCards] =  useState([])
 
@@ -16,18 +19,9 @@ const App = ()=>{
   const [mixCard, setMixCard] = useState(false);
   const [gameStart, setGameStart] = useState(false);
 
-  useEffect(()=>{
-    setCards();
+  useEffect(() =>{
+    setShuffledCards(shuffledArray([...cardsList, ...cardsList]).map((card, i) => ({ index: i, img: card, flipped: false })));
   },[])
-
-  const setCards = ()=>{
-    const cards = shuffledArray([...cardsList, ...cardsList]).map((card, i) => ({ index: i, img: card, flipped: false }));
-    setShuffledCards(cards);
-  }
-
-  const shuffledArray = (cardsList)=>{
-    return cardsList.sort(function () { return Math.random() - 0.5 });
-  }
 
   const handleCardClick = (card) =>{
     const flippedCard = {...card, flipped: true};
@@ -52,8 +46,8 @@ const App = ()=>{
     }
   }
 
-  const startGame= ()=>{
-    setCards();
+  const startGame = () =>{
+    setShuffledCards(shuffledArray([...cardsList, ...cardsList]).map((card, i) => ({ index: i, img: card, flipped: false })));
     setMixCard(true);
     setGameStart(true);
     setTimeout(() => {

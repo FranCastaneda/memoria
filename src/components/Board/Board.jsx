@@ -3,7 +3,7 @@ import Cards from '../Cards/Cards';
 import './Board.css';
 
 
-const Board = ({ cards, animating, handleCardClick, mix})=>{
+const Board = ({ cards, animating, handleCardClick, mix}) =>{
   return (
     <>
       <main className='board'>
